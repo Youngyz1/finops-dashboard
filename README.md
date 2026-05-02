@@ -185,7 +185,8 @@ python -m collector.metrics_exporter
 
 Expected output:
 ```
-✓ Metrics server running on http://localhost:8000/metrics
+✓ Metrics
+ server running on http://localhost:8000/metrics
 Collecting costs...
   ✓ Costs collected
 Checking tags...
@@ -321,6 +322,17 @@ python -m collector.jira_reporter
 # Start the Prometheus metrics HTTP server (keeps running)
 python -m collector.metrics_exporter
 ```
+
+# Terminal 1 — start the stack
+cd ~/finops-dashboard/infra && docker compose up -d
+
+# Terminal 2 — start the exporter (keep open)
+cd ~/finops-dashboard && python -m collector.metrics_exporter
+
+
+Open localhost:8000/metrics in browser
+Open localhost:9090/targets — show UP status
+Open localhost:3000 — show full Grafana dashboard 
 
 ---
 
