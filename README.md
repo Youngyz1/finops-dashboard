@@ -26,37 +26,7 @@ This pipeline runs every day at 08:00 UTC and:
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    GitHub Actions (cron)                     │
-│                    Runs daily at 08:00 UTC                   │
-└──────────────────────────┬──────────────────────────────────┘
-                           │
-           ┌───────────────▼───────────────┐
-           │         Python Pipeline        │
-           │                               │
-           │  cost_collector.py            │──► AWS Cost Explorer API
-           │  tag_checker.py               │──► AWS EC2 / S3 / RDS API
-           │  anomaly_detector.py          │──► Slack Webhook
-           │  jira_reporter.py             │──► Jira REST API
-           │  metrics_exporter.py          │
-           └───────────────┬───────────────┘
-                           │ :8000/metrics
-           ┌───────────────▼───────────────┐
-           │          Prometheus            │
-           │     Scrapes every 60s          │
-           └───────────────┬───────────────┘
-                           │
-           ┌───────────────▼───────────────┐
-           │           Grafana              │
-           │   localhost:3000               │
-           │                               │
-           │  • Daily cost by service       │
-           │  • Untagged resource count     │
-           │  • Active anomaly count        │
-           └───────────────────────────────┘
-```
-
+![Architecture](screenshots/architecture.svg)
 ---
 
 ## Tech Stack
