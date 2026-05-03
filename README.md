@@ -203,7 +203,7 @@ Verify metrics are being served:
 curl http://localhost:8000/metrics
 ```
 ### Metrics
-![Resource Metrics](screenshots/resource-matrics.png)
+![Resource Metrics](screenshots/resource-metrics.png)
 You should see output like:
 ```
 aws_service_cost_usd{service="Amazon EC2"} 45.2
