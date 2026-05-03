@@ -182,7 +182,8 @@ Open a new terminal and run:
 cd finops-dashboard
 python -m collector.metrics_exporter
 ```
-
+### VsCode Terminal
+![VsCode Terminal](screenshots/vscode-terminal.png)
 Expected output:
 ```
 ✓ Metrics
@@ -201,7 +202,8 @@ Verify metrics are being served:
 ```bash
 curl http://localhost:8000/metrics
 ```
-
+### Metrics
+![Resource Metrics](screenshots/resource-matrics.png)
 You should see output like:
 ```
 aws_service_cost_usd{service="Amazon EC2"} 45.2
@@ -269,11 +271,15 @@ max(aws_cost_anomaly_count)
 
 Save the dashboard as **FinOps — AWS Cost Monitor**.
 
+### Grafana — Live Cost Dashboard
+![Grafana Dashboard](screenshots/grafana-dashboard.png)
 ---
 
 ## GitHub Actions Setup
 
 The pipeline runs automatically every day at 08:00 UTC. To set it up:
+### GitHub Actions — Pipeline Green
+![GitHub Actions](screenshots/github-actions-green.png)
 
 ### 1. Add GitHub Secrets
 
@@ -291,6 +297,8 @@ Add each of these:
 | `JIRA_EMAIL` | Your Jira email |
 | `JIRA_API_TOKEN` | Your Jira API token |
 | `JIRA_PROJECT_KEY` | e.g. `OPS` or `SCRUM` |
+### GitHub Secrets
+![GitHub Secrets](screenshots/secrets-variables.png)
 
 ### 2. Get a Jira API token
 
@@ -301,7 +309,11 @@ Go to `https://id.atlassian.com/manage-profile/security/api-tokens` → **Create
 Go to your repo → **Actions → FinOps Daily Run → Run workflow → Run workflow**
 
 Expected result: all steps green, logs showing `Found 0 anomalies`.
+### Jira — Auto-created Ticket
+![Jira Ticket](screenshots/jira-ticket.png)
 
+### Slack Alert — Anomaly Detected
+![Slack Alert](screenshots/slack-alert.png)
 ---
 
 ## Running Individual Scripts
@@ -334,6 +346,10 @@ Open localhost:8000/metrics in browser
 Open localhost:9090/targets — show UP status
 Open localhost:3000 — show full Grafana dashboard 
 
+
+
+cd ~/finops-dashboard
+python test_alerts.py
 ---
 
 ## Prometheus Metrics Reference
@@ -377,4 +393,4 @@ docker compose down
 
 **Ohia Uche Godwill**
 Cloud & DevOps Engineer
-[GitHub](https://github.com/Youngyz1) · [LinkedIn](https://linkedin.com/in/yourprofile) · godwillyoungyz@gmail.com
+[GitHub](https://github.com/Youngyz1) · [www.linkedin.com/in/ohia-uche-10ba3b223] · godwillyoungyz@gmail.com
